@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | SmartSched</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-robot"></i>
+            <span>SmartSched</span>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+        <div class="nav-actions">
+            <a href="login.html" class="login-btn">Login</a>
+            <a href="signup.html" class="signup-btn active">Sign Up</a>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Auth Container -->
+    <main class="auth-container centered-form">
+        <div class="auth-form-container">
+            <div class="auth-form-header">
+                <h2>Create Your Account</h2>
+                <p>Already have an account? <a href="login.html">Login here</a></p>
+            </div>
+
+            <form id="signupForm" class="auth-form">
+                <div class="form-group floating">
+                    <input type="text" id="signupName" required>
+                    <label for="signupName">Full Name</label>
+                    <i class="fas fa-user"></i>
+                </div>
+
+                <div class="form-group floating">
+                    <input type="email" id="signupEmail" required>
+                    <label for="signupEmail">Email Address</label>
+                    <i class="fas fa-envelope"></i>
+                </div>
+
+                <div class="form-group floating">
+                    <input type="password" id="signupPassword" required>
+                    <label for="signupPassword">Password</label>
+                    <i class="fas fa-lock"></i>
+                    <button type="button" class="toggle-password">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+
+                <div class="password-strength">
+                    <div class="strength-meter">
+                        <div class="strength-bar weak"></div>
+                    </div>
+                    <span class="strength-text">Password Strength: Weak</span>
+                </div>
+
+                <div class="form-group floating">
+                    <input type="password" id="signupConfirm" required>
+                    <label for="signupConfirm">Confirm Password</label>
+                    <i class="fas fa-lock"></i>
+                </div>
+
+                <div class="form-terms">
+                    <input type="checkbox" id="agreeTerms" required>
+                    <label for="agreeTerms">
+                        I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                    </label>
+                </div>
+
+                <button type="submit" class="auth-submit-btn">
+                    <span>Create Account</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+
+                <div class="auth-divider">
+                    <span>or sign up with</span>
+                </div>
+
+                <div class="social-auth">
+                    <button type="button" class="social-btn google">
+                        <i class="fab fa-google"></i>
+                        Google
+                    </button>
+                    <button type="button" class="social-btn github">
+                        <i class="fab fa-github"></i>
+                        GitHub
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <div class="logo">
+                    <i class="fas fa-robot"></i>
+                    <span>SmartSched</span>
+                </div>
+                <p class="footer-about">AI-powered time management for individuals and teams who want to achieve more with less stress.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Product</h3>
+                <ul>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Integrations</a></li>
+                    <li><a href="#">Updates</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Tutorials</a></li>
+                    <li><a href="#">API Docs</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 SmartSched. All rights reserved.</p>
+            <button id="backToTop" class="back-to-top">
+                <i class="fas fa-arrow-up"></i> Back to Top
+            </button>
+        </div>
+    </footer>
+
+    <script src="auth.js"></script>
+</body>
+</html>

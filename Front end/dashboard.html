@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | SmartSched</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Vertical Navigation -->
+        <nav class="dashboard-nav">
+            <div class="nav-header">
+                <i class="fas fa-robot"></i>
+                <span>SmartSched</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li class="active" data-section="dashboard"><a href="#"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li data-section="schedule"><a href="#"><i class="fas fa-calendar-alt"></i> Schedule</a></li>
+                <li data-section="tasks"><a href="#"><i class="fas fa-tasks"></i> Tasks</a></li>
+                <li data-section="analytics"><a href="#"><i class="fas fa-chart-line"></i> Analytics</a></li>
+                <li data-section="settings"><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+            
+            <div class="nav-footer">
+                <div class="user-profile" id="userProfile">
+                    <!-- Dynamically populated from JS -->
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content Sections -->
+        <main class="dashboard-main">
+            <!-- Dashboard Section -->
+            <section class="content-section active" id="dashboard-section">
+                <header class="content-header">
+                    <h1 id="greeting">Good morning</h1>
+                    <p class="current-date" id="currentDate">Loading date...</p>
+                </header>
+
+                <div class="widgets-grid">
+                    <!-- Today's Schedule Summary -->
+                    <div class="widget medium">
+                        <div class="widget-header">
+                            <h3><i class="fas fa-calendar-day"></i> Today's Schedule</h3>
+                        </div>
+                        <div class="today-schedule" id="todaySchedule">
+                            <!-- Dynamically populated -->
+                        </div>
+                    </div>
+
+                    <!-- AI Suggestion Card -->
+                    <div class="widget medium">
+                        <div class="widget-header">
+                            <h3><i class="fas fa-robot"></i> AI Suggestions</h3>
+                        </div>
+                        <div class="ai-suggestion" id="aiSuggestion">
+                            <!-- Dynamically populated -->
+                        </div>
+                    </div>
+
+                    <!-- Productivity Stats -->
+                    <div class="widget medium">
+                        <div class="widget-header">
+                            <h3><i class="fas fa-chart-pie"></i> Productivity Stats</h3>
+                        </div>
+                        <div class="productivity-stats">
+                            <div class="stat-card">
+                                <div class="stat-value" id="todayTasks">0</div>
+                                <div class="stat-label">Tasks Today</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value" id="weekTasks">0</div>
+                                <div class="stat-label">This Week</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value" id="focusTime">0h</div>
+                                <div class="stat-label">Focus Time</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Motivational Quote -->
+                    <div class="widget small">
+                        <div class="widget-header">
+                            <h3><i class="fas fa-quote-left"></i> Motivation</h3>
+                        </div>
+                        <div class="motivational-quote" id="motivationalQuote">
+                            <!-- Dynamically populated -->
+                        </div>
+                    </div>
+
+                    <!-- Task Progress -->
+                    <div class="widget small">
+                        <div class="widget-header">
+                            <h3><i class="fas fa-spinner"></i> Task Progress</h3>
+                        </div>
+                        <div class="progress-wheel">
+                            <canvas id="progressChart"></canvas>
+                            <div class="progress-text" id="progressText">0% Done</div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Add -->
+                    <div class="widget large">
+                        <div class="widget-header">
+                            <h3><i class="fas fa-plus-circle"></i> Quick Add</h3>
+                        </div>
+                        <form class="quick-add-form" id="quickAddForm">
+                            <div class="form-group">
+                                <input type="text" id="quickTaskInput" placeholder="What needs to be done?" required>
+                            </div>
+                            <div class="form-options">
+                                <select id="taskCategory">
+                                    <option value="work">Work</option>
+                                    <option value="personal">Personal</option>
+                                    <option value="urgent">Urgent</option>
+                                </select>
+                                <button type="submit" class="btn small">Add Task</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Schedule Section -->
+            <section class="content-section" id="schedule-section">
+                <header class="content-header">
+                    <h1>Schedule</h1>
+                    <div class="header-actions">
+                        <div class="view-options">
+                            <button class="view-option active" data-view="day">Day</button>
+                            <button class="view-option" data-view="week">Week</button>
+                            <button class="view-option" data-view="month">Month</button>
+                        </div>
+                        <button class="btn primary" id="optimizeScheduleBtn">
+                            <i class="fas fa-magic"></i> Optimize Schedule
+                        </button>
+                    </div>
+                </header>
+
+                <div class="calendar-container">
+                    <div class="calendar-view" id="calendarView">
+                        <!-- Calendar will be rendered here by JS -->
+                    </div>
+                </div>
+
+                <!-- Recurring Events Panel -->
+                <div class="widget">
+                    <div class="widget-header">
+                        <h3><i class="fas fa-sync-alt"></i> Recurring Events</h3>
+                        <button class="btn small" id="addRecurringEventBtn">Add New</button>
+                    </div>
+                    <div class="recurring-events" id="recurringEvents">
+                        <!-- Dynamically populated -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tasks Section -->
+            <section class="content-section" id="tasks-section">
+                <header class="content-header">
+                    <h1>Tasks</h1>
+                    <div class="header-actions">
+                        <div class="task-filters">
+                            <select id="taskFilter">
+                                <option value="all">All Tasks</option>
+                                <option value="today">Today</option>
+                                <option value="week">This Week</option>
+                                <option value="overdue">Overdue</option>
+                            </select>
+                        </div>
+                        <button class="btn primary" id="addTaskBtn">
+                            <i class="fas fa-plus"></i> Add Task
+                        </button>
+                    </div>
+                </header>
+
+                <div class="task-categories">
+                    <!-- Work Tasks -->
+                    <div class="task-category">
+                        <h3><i class="fas fa-briefcase"></i> Work</h3>
+                        <ul class="task-list" id="workTasks">
+                            <!-- Dynamically populated -->
+                        </ul>
+                    </div>
+
+                    <!-- Personal Tasks -->
+                    <div class="task-category">
+                        <h3><i class="fas fa-user"></i> Personal</h3>
+                        <ul class="task-list" id="personalTasks">
+                            <!-- Dynamically populated -->
+                        </ul>
+                    </div>
+
+                    <!-- Urgent Tasks -->
+                    <div class="task-category">
+                        <h3><i class="fas fa-exclamation"></i> Urgent</h3>
+                        <ul class="task-list" id="urgentTasks">
+                            <!-- Dynamically populated -->
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Pomodoro Timer -->
+                <div class="pomodoro-container">
+                    <div class="pomodoro-timer" id="pomodoroTimer">
+                        <div class="timer-display">25:00</div>
+                        <div class="timer-controls">
+                            <button class="btn" id="startPomodoroBtn"><i class="fas fa-play"></i> Start Focus</button>
+                            <button class="btn" id="resetPomodoroBtn"><i class="fas fa-redo"></i> Reset</button>
+                        </div>
+                    </div>
+                    <div class="pomodoro-stats">
+                        <div class="stat">
+                            <span class="value" id="todaySessions">0</span>
+                            <span class="label">Today</span>
+                        </div>
+                        <div class="stat">
+                            <span class="value" id="weekSessions">0</span>
+                            <span class="label">This Week</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analytics Section -->
+            <section class="content-section" id="analytics-section">
+                <header class="content-header">
+                    <h1>Analytics</h1>
+                    <div class="header-actions">
+                        <div class="analytics-period">
+                            <select id="analyticsPeriod">
+                                <option value="week">This Week</option>
+                                <option value="month">This Month</option>
+                                <option value="year">This Year</option>
+                            </select>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="analytics-grid">
+                    <!-- Time Distribution -->
+                    <div class="widget large">
+                        <div class="widget-header">
+                            <h3><i class="fas fa-clock"></i> Time Distribution</h3>
+                        </div>
+                        <div class="time-distribution">
+                            <canvas id="timeDistributionChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Productivity Score -->
+                    <div class="widget medium">
+                        <div class="widget-header">
+                            <h3><i class="fas fa-star"></i> Productivity Score</h3>
+                        </div>
+                        <div class="productivity-score">
+                            <div class="score-display" id="productivityScore">82</div>
+                            <div class="score-comparison">
+                                <span id="scoreComparisonText">↑ 5% from last week</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Focus Heatmap -->
+                    <div class="widget large">
+                        <div class="widget-header">
+                            <h3><i class="fas fa-fire"></i> Focus Heatmap</h3>
+                        </div>
+                        <div class="heatmap-container">
+                            <canvas id="focusHeatmap"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- AI Insights -->
+                    <div class="widget large">
+                        <div class="widget-header">
+                            <h3><i class="fas fa-lightbulb"></i> AI Insights</h3>
+                        </div>
+                        <div class="ai-insights" id="aiInsights">
+                            <!-- Dynamically populated -->
+                        </div>
+                    </div>
+
+                    <!-- Comparison Widget -->
+                    <div class="widget large">
+                        <div class="widget-header">
+                            <h3><i class="fas fa-balance-scale"></i> Comparison</h3>
+                            <div class="comparison-options">
+                                <select id="comparisonMetric">
+                                    <option value="tasks">Tasks Completed</option>
+                                    <option value="focus">Focus Time</option>
+                                    <option value="productivity">Productivity</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="comparison-chart">
+                            <canvas id="comparisonChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section class="content-section" id="settings-section">
+                <header class="content-header">
+                    <h1>Settings</h1>
+                </header>
+
+                <div class="settings-grid">
+                    <!-- Profile Settings -->
+                    <div class="widget">
+                        <div class="widget-header">
+                            <h3><i class="fas fa-user"></i> Profile</h3>
+                        </div>
+                        <form class="profile-form" id="profileForm">
+                            <div class="form-group">
+                                <label for="userName">Name</label>
+                                <input type="text" id="userName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="userEmail">Email</label>
+                                <input type="email" id="userEmail" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="userAvatar">Profile Picture</label>
+                                <input type="file" id="userAvatar" accept="image/*">
+                            </div>
+                            <button type="submit" class="btn">Save Changes</button>
+                        </form>
+                    </div>
+
+                    <!-- Preferences -->
+                    <div class="widget">
+                        <div class="widget-header">
+                            <h3><i class="fas fa-sliders-h"></i> Preferences</h3>
+                        </div>
+                        <form class="preferences-form" id="preferencesForm">
+                            <div class="form-group">
+                                <label>Work Hours</label>
+                                <div class="time-range">
+                                    <select id="workStart">
+                                        <!-- Options will be populated by JS -->
+                                    </select>
+                                    <span>to</span>
+                                    <select id="workEnd">
+                                        <!-- Options will be populated by JS -->
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="breakFrequency">Break Frequency</label>
+                                <select id="breakFrequency">
+                                    <option value="30">Every 30 minutes</option>
+                                    <option value="60">Every hour</option>
+                                    <option value="90">Every 1.5 hours</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="pomodoroLength">Pomodoro Length</label>
+                                <select id="pomodoroLength">
+                                    <option value="25">25 minutes</option>
+                                    <option value="30">30 minutes</option>
+                                    <option value="45">45 minutes</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn">Save Preferences</button>
+                        </form>
+                    </div>
+
+                    <!-- Theme Settings -->
+                    <div class="widget">
+                        <div class="widget-header">
+                            <h3><i class="fas fa-palette"></i> Appearance</h3>
+                        </div>
+                        <div class="theme-settings">
+                            <div class="theme-option">
+                                <input type="radio" id="themeLight" name="theme" value="light">
+                                <label for="themeLight">Light Mode</label>
+                            </div>
+                            <div class="theme-option">
+                                <input type="radio" id="themeDark" name="theme" value="dark">
+                                <label for="themeDark">Dark Mode</label>
+                            </div>
+                            <div class="theme-option">
+                                <input type="radio" id="themeSystem" name="theme" value="system">
+                                <label for="themeSystem">System Default</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI Settings -->
+                    <div class="widget">
+                        <div class="widget-header">
+                            <h3><i class="fas fa-robot"></i> AI Assistant</h3>
+                        </div>
+                        <form class="ai-settings-form" id="aiSettingsForm">
+                            <div class="form-group">
+                                <label for="aiProactivity">Proactivity Level</label>
+                                <select id="aiProactivity">
+                                    <option value="low">Low (Only when asked)</option>
+                                    <option value="medium" selected>Medium (Occasional suggestions)</option>
+                                    <option value="high">High (Frequent suggestions)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="notificationFrequency">Notification Frequency</label>
+                                <select id="notificationFrequency">
+                                    <option value="only_urgent">Only Urgent</option>
+                                    <option value="daily">Daily Digest</option>
+                                    <option value="immediate">Immediate</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn">Save AI Settings</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Task Modal (Hidden by default) -->
+    <div class="modal" id="taskModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modalTitle">Add New Task</h2>
+            <form id="taskForm">
+                <div class="form-group">
+                    <label for="taskTitle">Task Title</label>
+                    <input type="text" id="taskTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="taskCategoryModal">Category</label>
+                    <select id="taskCategoryModal">
+                        <option value="work">Work</option>
+                        <option value="personal">Personal</option>
+                        <option value="urgent">Urgent</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="taskDueDate">Due Date</label>
+                    <input type="datetime-local" id="taskDueDate">
+                </div>
+                <div class="form-group">
+                    <label for="taskPriority">Priority</label>
+                    <select id="taskPriority">
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="taskNotes">Notes</label>
+                    <textarea id="taskNotes" rows="3"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn primary">Save Task</button>
+                    <button type="button" class="btn" id="cancelTaskBtn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

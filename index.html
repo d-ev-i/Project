@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartSched - AI Time Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Sticky Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-robot"></i>
+            <span>SmartSched</span>
+        </div>
+        
+        <div class="nav-links" id="navLinks">
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li class="dropdown">
+                    <a href="#">Features <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="#"><i class="fas fa-brain"></i> AI Scheduling</a>
+                        <a href="#"><i class="fas fa-tasks"></i> Task Management</a>
+                        <a href="#"><i class="fas fa-chart-line"></i> Analytics</a>
+                    </div>
+                </li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+        
+        <div class="nav-actions">
+            <div class="search-box">
+                <input type="text" placeholder="Search...">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="auth-buttons">
+                <a href="login.html" class="login-btn">Login</a>
+                <a href="signup.html" class="signup-btn">Get Started</a>
+            </div>
+        </div>
+        
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Transform Your Productivity with AI</h1>
+            <p class="subtitle">SmartSched intelligently organizes your tasks to maximize efficiency and minimize stress</p>
+            <div class="cta-buttons">
+                <a href="signup.html" class="primary-btn">Start for Free <i class="fas fa-arrow-right"></i></a>
+                <a href="#" class="secondary-btn">
+                    <i class="fas fa-play"></i> Watch Demo
+                </a>
+            </div>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">10,000+</span>
+                    <span class="stat-label">Schedules Optimized</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">95%</span>
+                    <span class="stat-label">User Satisfaction</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-header">
+            <span class="section-subtitle">POWERFUL FEATURES</span>
+            <h2>Designed to Boost Your Efficiency</h2>
+        </div>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>AI-Powered Scheduling</h3>
+                <p>Our algorithm creates the perfect schedule based on your priorities and deadlines</p>
+                <div class="feature-details">
+                    <h4>How It Works</h4>
+                    <ul>
+                        <li>Analyzes task priorities</li>
+                        <li>Considers deadlines</li>
+                        <li>Optimizes your energy levels</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-tasks"></i>
+                </div>
+                <h3>Smart Task Management</h3>
+                <p>Easily organize, categorize, and track all your tasks in one place</p>
+                <div class="feature-details">
+                    <h4>Key Benefits</h4>
+                    <ul>
+                        <li>Drag-and-drop interface</li>
+                        <li>Priority tagging</li>
+                        <li>Progress tracking</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Productivity Analytics</h3>
+                <p>Get insights into your work patterns and productivity trends</p>
+                <div class="feature-details">
+                    <h4>Metrics Included</h4>
+                    <ul>
+                        <li>Time allocation</li>
+                        <li>Task completion rates</li>
+                        <li>Focus time analysis</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="section-header">
+            <span class="section-subtitle">SIMPLE STEPS</span>
+            <h2>How SmartSched Works</h2>
+        </div>
+        
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Add Your Tasks</h3>
+                    <p>Input your tasks with deadlines, priorities, and estimated duration</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>AI Analyzes</h3>
+                    <p>Our algorithm evaluates your workload and constraints</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Get Your Schedule</h3>
+                    <p>Receive an optimized daily plan tailored just for you</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <div class="logo">
+                    <i class="fas fa-robot"></i>
+                    <span>SmartSched</span>
+                </div>
+                <p class="footer-about">AI-powered time management for individuals and teams who want to achieve more with less stress.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Product</h3>
+                <ul>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Integrations</a></li>
+                    <li><a href="#">Updates</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Tutorials</a></li>
+                    <li><a href="#">API Docs</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 SmartSched. All rights reserved.</p>
+            <button id="backToTop" class="back-to-top">
+                <i class="fas fa-arrow-up"></i> Back to Top
+            </button>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
